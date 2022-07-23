@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bai2</title>
+</head>
+<body>
+<script>
+    let doC = +prompt('Moi nhap nhiet do');
+    let flag =true;
+    while(flag){
+        if (doC>100){
+            doC =  +prompt('Nhiet do nhap qua cao');
+        }else if(doC<20) {
+            doC = +prompt('Nhiet do nhap qua thap');
+
+        }else if (doC>=20 && doC<=100){
+            flag=false;
+        }else {
+            doC=+prompt('Nhap sai dinh dang');
+        }
+    }
+    document.write('Nhiet  do luc nay la : ',doC);
+
+
+
+</script>
+
+
+
+</body>
+</html>

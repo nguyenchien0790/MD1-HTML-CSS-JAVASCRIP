@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<!--Hiển thị n số nguyên tố đầu tiên-->
+<!--<br><br>-->
+<!--Nhập n: <input type="number" id="n" min="0">-->
+<!--<br><br>-->
+<!--<button onclick="print()">In</button>-->
+<!--<p id="result">Kết quả: </p>-->
+
+<script>
+
+//  function print() {
+//
+//    document.getElementById('result').textContent = 'Kết quả: ';
+//
+//    let count = 0;
+//
+//    let N = 2;
+//
+//    let soLuong = +document.getElementById('n').value;
+//
+//    while (count < soLuong) {
+//
+//      check = false;
+//
+//      for (let i = 2; i < N; i++) {
+//        if (N % i == 0) {
+//          check = true;
+//        }
+//      }
+//      if (!check) {
+//        document.getElementById('result').textContent += (N + ', ');
+//        count++;
+//      }
+//      N++;
+//    }
+//    document.getElementById('result').textContent = document.getElementById('result').textContent.slice(0, -2);
+//    document.getElementById('result').textContent += '.';
+//  }
+
+
+function isprime(n){
+  //flag = 0 => không phải số nguyên tố
+  //flag = 1 => số nguyên tố
+
+  let flag = 1;
+
+  if (n <2) return flag = 0; /*Số nhỏ hơn 2 không phải số nguyên tố => trả về 0*/
+
+  /*Sử dụng vòng lặp while để kiểm tra có tồn tại ước số nào khác không*/
+  let i = 2;
+  while(i <n){
+    if( n%i==0 ) {
+      flag = 0;
+      break; /*Chỉ cần tìm thấy 1 ước số là đủ và thoát vòng lặp*/
+    }
+    i++;
+  }
+
+  return flag;
+}
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

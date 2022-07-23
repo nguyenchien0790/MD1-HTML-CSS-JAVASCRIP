@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai7</title>
+
+</head>
+<body>
+<script>
+    let mangSoNguyen = [];
+    let n = +prompt('Nhap so luong phan tu cua mang');
+
+    for (let i = 0; i < n; i++) {
+        mangSoNguyen.push(+prompt('Gia tri phan tu trong mang'));
+    }document.write('Cac gia tri trong mang la : '+mangSoNguyen + '<br>');
+
+    let v = +prompt('Nhap V');
+    for (let j = 0; j < mangSoNguyen.length ; j++) {
+        if (v===mangSoNguyen[j]){
+            mangSoNguyen.splice(j,1);
+            mangSoNguyen.push(v);
+        }
+    }
+    document.write("Cac gia tri trong mang sau khi kiem tra V la : "+mangSoNguyen);
+</script>
+</body>
+</html>

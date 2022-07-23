@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doinhietdo</title>
+</head>
+<body>
+<div align="center">
+<h1> Chuyển đổi nhiệt độ</h1>
+<p id="doF"></p>
+<p id="doK"></p>
+<input id="doC"  type="text">
+<button onclick="chuyenDoi()">C to F & K</button>
+</div>
+<script>
+    class TemPerature {
+        doC
+        constructor(doC) {
+            this.doC = doC
+        }
+        getDoF (){
+            if (this.doC<-273){
+                return -500
+            }else {
+                return 9*this.doC/5+32
+            }
+        }
+        getDoK (){
+            if (this.doC< -273){
+                return -5
+            }else{
+                return this.doC+273.15
+            }
+        }
+
+
+    }
+    // let doC = new TemPerature(-274)
+    function chuyenDoi() {
+        let doC = +document.getElementById('doC').value;
+        let chuyen = new TemPerature(doC)
+        let doF = chuyen.getDoF()
+        let doK = chuyen.getDoK()
+        if (doF == -500 || doK == -5) {
+            document.getElementById('doF').innerText = 'Không thỏa mãn'
+        } else {
+            document.getElementById('doF').innerText = 'Thỏa mãn độ F' + doF
+            document.getElementById('doK').innerText = 'Thỏa mãn độ K' + doK
+        }
+        if (doK == -5) {
+            document.getElementById('doK').innerText = 'Không thoải mãn'
+        } else {
+            document.getElementById('doK').innerText = 'Thỏa mãn độ k' + doK
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

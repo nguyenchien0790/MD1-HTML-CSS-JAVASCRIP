@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>baitap2</title>
+</head>
+<body>
+<script>
+    let a =+prompt("Chon 1 de doi tu foot sang meter  \r Chon 2 de doi tu meter sang foot");
+    let giatri = +prompt('nap gia tri')
+    if(a==1){
+        alert(giatri + 'feet  = ' + footToMeTer(giatri) + 'meters' )
+    } if (a==2){
+        alert(giatri+ 'meter ='+ metertoFood(giatri)+ 'feet')
+    } else {
+        alert(a);
+    }
+
+    function footToMeTer(foot) {
+        return 0.305*foot;
+    }
+    function metertoFood(meter) {
+        return 3.279 * meter
+    }
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

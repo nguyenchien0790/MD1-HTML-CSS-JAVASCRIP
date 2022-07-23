@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>bai6</title>
+
+</head>
+<body>
+
+<script>
+  // Doanh thu từ 0 – 10 triệu đồng, nhận hoa hồng 3%
+  // Doanh thu từ 10 – 30 triệu đồng, nhận hoa hồng 5%
+  // Doanh thu trên 30 triệu đồng sẽ nhận hoa hồng 7%
+  // Doanh thu trên 50 triệu đồng sẽ nhận hoa hồng 10%
+
+  let doanhThu =+prompt('Nhap doanh so ban hang','VND')
+  let hoaHong
+  if (doanhThu>=50000000){
+    hoaHong=doanhThu*0.1
+    document.write('Hoa hong cua ban la : ',hoaHong+' VND ');
+  }else{
+    if (doanhThu>=30000000){
+      hoaHong=doanhThu*0.07
+      document.write('Hoa hong cua ban la : ',hoaHong+' VND ');
+    }else {
+      if (doanhThu >= 10000000) {
+        hoaHong = doanhThu * 0.05
+        document.write('Hoa hong cua ban la : ', hoaHong+' VND ');
+      } else {
+        hoaHong = doanhThu * 0.03
+          document.write('Hoa hong cua ban la : ',hoaHong+' VND ');
+      }
+    }
+
+    }
+
+
+</script>
+
+</body>
+</html>

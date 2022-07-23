@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai5</title>
+</head>
+<body>
+<script>
+    let diemKiemTra =+prompt('Nhap diem kiem tra');
+    let diemThiGiuaKy=+prompt('Nhap diem thi giua ky');
+    let diemThiCuoiKy=+prompt('Nhap diem thi cuoi ky');
+    let diemTrungBinh = ( diemKiemTra+diemThiGiuaKy+diemThiCuoiKy)/3;
+    console.log('Diem trung binh  : ',diemTrungBinh);
+    if (diemTrungBinh>=8){
+        document.write('Xep loai hoc luc GIOI');
+    }else {
+        if (diemTrungBinh>=6.5){
+            document.write('Xep loai hoc luc KHA');
+        }else{
+            if (diemTrungBinh>=5){
+                document.write('Xep loai hoc luc TB');
+            }else{
+                if (diemTrungBinh>=3.5){
+                    document.write('Xep loai hoc luc YEU');
+                }else {
+                    document.write('Xep loai hoc luc KEM');
+                }
+            }
+        }
+    }
+
+
+
+</script>
+
+
+
+</body>
+</html>

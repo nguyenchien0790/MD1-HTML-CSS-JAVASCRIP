@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="Category.js"></script>
+</head>
+<body>
+
+<h1 align="center">CRUD - JAVASCRIP - OOP</h1>
+<div>
+    Thêm loại nhạc <input id="newMusic" type="text" >
+    <button onclick="creatMusic()"> Creat</button>
+    <span id="validate"></span>
+
+</div>
+<table border="1" style="width: 100%; text-align: center">
+    <th>STT</th>
+    <th>NAME</th>
+    <th>EDIT</th>
+    <th>DELETE</th>
+    <tbody id="drawTable">
+    </tbody>
+</table>
+<script>
+    // function showList() {
+    //     let drawTable='';
+    //     for (let i =0;i <listMusic.length;i++) {
+    //
+    //         drawTable += `<tr>
+    //                        <td>${i+1}</td>
+    //                        <td>${listMusic[i]}</td>
+    //                        <td><button onclick="updateMusic(${i})">Edit</button></td>
+    //                        <td><button onclick="deleteMusic(${i})">Delete</button></td>
+    //                     </tr>`
+    //
+    //     }
+    //     document.getElementById('drawTable').innerHTML = drawTable;
+    // }showList();
+
+    let category1 = new Category(1,'Nhac vang')
+    let category2 = new Category(2,'Nhac do')
+    let category3 = new Category(3,'Nhac tre')
+    let category4 = new Category(4,'Rock')
+    let listCategory = [];
+    listCategory.push(category1,category2,category3,category4);
+
+    function showListCategory() {
+        let drawTable = '';
+        let class_tr = '';
+
+        for (let i = 0; i < listCategory.length; i++) {
+            drawTable += `<tr class="${class_tr}">
+                      <td>${listCategory[i].id}</td>
+                      <td>${listCategory[i].name}</td>
+                      <td><button onclick="updateMusic(${listCategory[i].id})">Edit</button></td>
+                      <td><button onclick="deleteMusic(${listCategory[i].id})">Delete</button></td>
+                      </tr>`
+        }
+        document.getElementById('drawTable').innerHTML = drawTable;
+    }showListCategory();
+
+    function creatMusic() {
+        let newMusic =document.getElementById('newMusic').value;
+        if (newMusic.trim()===''){
+            document.getElementById('validate').innerHTML ='  <span style="color: red">The name not Empty</span>'
+        }else {
+            listCategory.push(new Category(listCategory.length+1,newMusic));
+            showListCategory();
+            document.getElementById('validate').innerHTML ='  <span style="color: blue">Create Success!!!</span>'
+        }
+
+    }
+    function updateMusic(id) {
+        let editList = prompt('Update Music',listCategory[id].name);
+        if(editList.trim()===''){
+            document.getElementById('validate').innerHTML ='  <span style="color: red">The name not Empty</span>'
+        }else{
+            listCategory[id].name = editList;
+            document.getElementById('validate').innerHTML ='  <span style="color: blue">Update Success!!!</span>'
+
+        }showList();
+
+    }
+    function deleteMusic(id) {
+        listCategory.splice(id,1);
+        showList();
+    }
+
+
+
+    // function updateCategory(id) {
+    //     for (let i = 0; i < listCategory.length; i++) {
+    //         if (listCategory[i].id==id){
+    //             let editCategory = prompt('editCategory: ',listCategory[i].name)
+    //             listCategory[i].setName(editCategory)
+    //         }
+    //     }
+    //     showListCategory();
+    // }
+    //
+    // function deleteCategory(id) {
+    //     for (let i = 0; i < listCategory.length; i++) {
+    //         if (listCategory[i].id==id){
+    //             listCategory.splice(i,1);
+    //         }
+    //     }
+    //     showListCategory();
+    // }
+
+
+</script>
+</body>
+</html>

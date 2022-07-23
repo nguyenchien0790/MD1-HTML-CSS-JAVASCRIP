@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai8</title>
+</head>
+<body>
+<script>
+    let a = [2,4,6,8,9];
+    function daoNguoc(mang) {
+        let b = [];
+        for (let i = 0; i < a.length; i++) {
+            b.unshift(mang[i]);
+        }
+        for (let i = 0; i < a.length; i++) {
+            mang[i] = b[i];
+        }
+    } daoNguoc(a);
+      document.write('Mang sau khi dao nguoc la : ' ,a);
+
+</script>
+</body>
+</html>

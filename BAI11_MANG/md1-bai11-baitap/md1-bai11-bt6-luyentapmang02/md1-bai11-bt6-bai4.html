@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let chuoiNhapVao = prompt('Nhap chuoi');
+    let b = [];
+    const chuoiSoSanh = 'qwertyuiopasdfghjklzxcvbnm';
+
+    for (let i = 0; i < chuoiNhapVao.length; i++) {
+        if (chuoiSoSanh.indexOf(chuoiNhapVao[i].toLowerCase()) !== -1 &&
+            !(chuoiNhapVao[i].toLowerCase() == ' ' && b[b.length - 1] == ' ')) {
+
+            b.push(chuoiNhapVao[i]);
+            console.log(i);
+        }
+    }
+    let tachMang = b.join('').split(' ');
+    console.log('============'+tachMang)
+    document.write('Chuoi vua nhap co ' + tachMang.length + ' chu cai');
+
+</script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>md1-bai4-thuchanh1</title>
+</head>
+<body>
+
+<div align="center" >
+<button type="button" onclick="showMessage()">Click Me!</button>
+
+<script>
+    function showMessage(){
+        alert('Xin chào!');
+    }
+</script>
+
+<br>
+<br>
+<br>
+
+<div id="messageDiv"></div>
+<button type="button" onclick="showMessagee()">Clck Me!</button>
+<script>
+    function showMessagee(){
+        document.getElementById('messageDiv').innerHTML='Xin chao';
+    }
+
+</script>
+    <br><br><br>
+
+
+    <button type="button" onclick="showMessageee();">Click Me!</button>
+    <script>
+        function showMessageee(){
+            document.write('Xin chào!');
+        }
+    </script>
+    <br><br><br>
+
+
+    <button type="button" onclick="showMessageeee();">Click Me!</button>
+    <script>
+        function showMessageeee(){
+            console.log('Xin chào!');
+        }
+    </script>
+
+    <script >
+        var alo123 = ('Nguyen Minh Chien')
+        console.log(alo123)
+        console.warn(alo123)
+        console.error(alo123)
+        confirm('Du 18 tuoi khong doi xem?')
+        prompt('May bao nhieu tuoi?')
+        setTimeout(function () {
+            alert('Thong bao')
+        },1)
+
+        setInterval(function () {
+            alert('Thong bao')
+        },10000)
+    </script>
+    <br><br><br>
+
+
+
+
+
+
+
+</body>
+</html>

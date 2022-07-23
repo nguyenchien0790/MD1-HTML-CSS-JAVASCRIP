@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>md1-bai5-maytinhcoban</title>
+</head>
+<body>
+<br><br>
+<h1 align="center">Caculator</h1>
+<table width="800px" height="200px"  align="center" border="1">
+    <tr align="center">
+
+        <td colspan="2">
+            <pre>Nhap so thu nhat</pre>
+            <input type="text" id="soThuNhat">
+        </td>
+
+        <td colspan="2">
+            <pre>Nhap so thu hai</pre>
+            <input type="text" id="soThuHai">
+        </td>
+    </tr>
+    <br>
+    <tr align="center">
+        <td><button style="width: 120px" id="pcong" onclick="phepCong()">Addition(+)</button></td>
+        <td><button style="width: 120px" id="ptru" onclick="phepTru()">Subtraction(-)</button></td>
+        <td><button style="width: 120px" id="pnhan" onclick="phepNhan()">Multiplication(X)</button></td>
+        <td><button style="width: 120px" id="pchia" onclick="phepChia()">Division(/)</button></td>
+    </tr>
+</table>
+<br><br><br>
+<p id="reSult"></p>
+
+<script>
+    function phepCong() {
+        let sothunhat = +document.getElementById('soThuNhat').value;
+        let sothuhai = +document.getElementById('soThuHai').value;
+        let resuls = sothuhai +sothunhat;
+        document.write('Result Addition : '+resuls);
+    }
+    function phepTru() {
+        let sothunhat = +document.getElementById('soThuNhat').value;
+        let sothuhai = +document.getElementById('soThuHai').value;
+        let resuls = sothunhat - sothuhai;
+        document.write('Result Subtraction : '+resuls);
+    }
+    function phepNhan() {
+        let sothunhat = +document.getElementById('soThuNhat').value;
+        let sothuhai = +document.getElementById('soThuHai').value;
+        let resuls = sothunhat * sothuhai;
+        document.write('Result Multiplication : '+resuls);
+    }
+    function phepChia() {
+        let sothunhat = +document.getElementById('soThuNhat').value;
+        let sothuhai = +document.getElementById('soThuHai').value;
+        let resuls = sothunhat / sothuhai;
+        document.write('Result Division : '+resuls);
+    }
+
+</script>
+</body>
+</html>

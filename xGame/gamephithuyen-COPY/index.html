@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Space Race</title>
+    <script src="Spaceship.js"></script>
+    <script src="Debris.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="Timer.js"></script>
+    <script src="Score.js"></script>
+
+</head>
+<canvas id="myCanvas" width='500' height="400" style="border: 2px solid black"></canvas>
+<canvas id="instruction" width='350' height="400" style="border: 2px solid gray"></canvas>
+<div>
+    <button onclick="setup()" style="position: relative; top: 420px; left:400px; width: 65px; height: 40px ">Play</button>
+    <button onclick="stopGame()"style="position: relative; top: 420px; left:450px; width: 65px; height: 40px " >Stop</button>
+</div>
+
+<body>
+
+</body>
+</html>
+<script>
+    let myInstruction = document.getElementById('instruction');
+    let pen = myInstruction.getContext('2d');
+    pen.font = '33px Arial';
+    pen.fillText('How to play', 90, 50);
+    pen.font = '20px Arial';
+    pen.fillText('Press button ↑ to go up', 10, 90);
+    pen.fillText('Press button ↓ to go down', 10, 120);
+    pen.fillText('Press button ← to go left', 10, 150);
+    pen.fillText('Press button → to go right', 10, 180);
+    pen.fillText('Avoid all debris to finish', 10, 210);
+    pen.fillText('Across once you will gain 1 point', 10, 240);
+    pen.fillText('Each turn lasts 2 minutes (left timer)', 10, 270);
+    pen.fillText('Now enjoy it.', 10, 300);
+    pen.fillText('Thuong Nguyen', 170, 330);
+    pen.fillText('03/16/2022', 200, 360);
+
+    let canvas = document.getElementById('myCanvas');
+    let ctx = canvas.getContext('2d');
+    let ship = new SpaceShip(canvas, 350, 30, 40, 'img/spaceship.png');
+    let timer = new Timer();
+    let score = new Score();
+    const allDebris = [];
+    let audioRace = new Audio('music/race.mp3');
+    let audioGameOver = new Audio('music/over.mp3');
+    let audioScore = new Audio('music/scorepoint.mp3');
+    let audioCrash = new Audio('music/crash.mp3');
+    let audioStop = new Audio('music/stop.mp3');
+    let startGame = false;
+
+    function addDebris() {
+        let posY = [0, 20, 50, 100, 150, 180, 200, 250, 270, 300];
+        let randY = Math.floor(Math.random() * posY.length);
+        let randomX = Math.floor(Math.random() * 20) + canvas.width;
+        let debris = new Debris(randomX, posY[randY]);
+        allDebris.push(debris);
+    }
+
+    let setTimeAppearDebris = setInterval(appearDebris, 300);
+
+    let count = 0;
+
+    function appearDebris() {
+        if (!startGame) return;
+        addDebris();
+        audioRace.play();
+        count++;
+        if (count > 500) {
+            clearInterval(setTimeAppearDebris);
+        }
+    }
+
+    function setup() {
+        startGame = true;
+        clearCanvas();
+        allDebris.forEach(function (item) {
+            checkCrash(item, ship);
+            item.update();
+
+        })
+        ship.drawImage();
+        timer.displayTimer();
+        timer.countDown();
+        score.displayScore(ship.score);
+        endGame();
+        window.requestAnimationFrame(setup);
+    }
+
+
+    function checkCrash(obj1, obj2) {
+        if (obj2.x + obj2.width > obj1.x - obj1.radius &&
+            obj1.y + obj1.radius > obj2.y &&
+            obj1.x + obj1.radius > obj2.x &&
+            obj1.y - obj1.radius < obj2.y + obj2.height
+        ) {
+            audioCrash.play();
+            ship.x = canvas.width * .5;
+            ship.y = 350;
+        } else {
+            ship.hasPlayerScoredAPoint();
+        }
+    }
+
+    function endGame() {
+        if (timer.y > canvas.height) {
+            audioRace.pause();
+            audioGameOver.play();
+            window.location.reload();
+            alert('End game!! You earned ' + ship.score + ' points!');
+        }
+    }
+
+    function stopGame() {
+        if (!startGame) return;
+        startGame = false;
+        audioRace.pause();
+        audioStop.play();
+        window.location.reload();
+        alert('You stopped the game. The game will be restarted.');
+    }
+
+</script>

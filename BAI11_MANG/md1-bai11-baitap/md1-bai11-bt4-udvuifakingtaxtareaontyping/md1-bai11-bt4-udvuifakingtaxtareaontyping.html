@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai4</title>
+</head>
+<body>
+
+<div align="center">
+<h1 style="color: blue">Hãy viết cảm nhận của bạn về Chiến ở phía bên dưới nhé !</h1>
+<textarea onkeypress="nhap(event)"  id="oNhapChu" cols="100" rows="10" style="font-size: 30px;color: red " ></textarea>
+</div>
+<script>
+    let chuHienThi = 'ANH CHIẾN RẤT ĐẸP TRAI RẤT RẤT RẤT ĐẸP TRAI VÃI VÃI VÃI VÃI VÃI HEHEHE =))';
+    let a = [];
+    let i = 0;
+
+    function nhap(chu) {
+        event.preventDefault();
+        a.push(chuHienThi[i]);
+        document.getElementById('oNhapChu').value = a.join('');
+        i++;
+        if(i > chuHienThi.length){
+            a = [];
+            document.getElementById('oNhapChu').value = '';
+            i = 0;
+        }
+    }
+
+</script>
+
+</body>
+</html>

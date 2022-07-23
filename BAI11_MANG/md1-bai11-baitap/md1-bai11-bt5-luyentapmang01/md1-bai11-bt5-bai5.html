@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai5</title>
+</head>
+<body>
+<script>
+    let arr=[2,3,6,-2,5,-8,7,-4,6,-5,3,-9];
+    let b=[];
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+        console.log('Gia tri cua i : ' ,i);
+        if (arr[i]<0){
+            b.push(arr[i]);
+            count++;
+            console.log('Dem ',count);
+        }
+    }document.write('Co  ' + count + ' so nguyen am trong mang arr la cac so : ' +b );
+
+</script>
+</body>
+</html>

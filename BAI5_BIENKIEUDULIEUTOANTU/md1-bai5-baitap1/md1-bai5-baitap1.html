@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>md1-bai5-baitap1</title>
+</head>
+<body>
+<!--<input type="text" id="toan">&ndash;&gt;-->
+<!--<input type="text" id="ly">-->
+<!--<input type="text" id="hoa">-->
+<!--<button onclick="diemTrungBinh()">Nhap </button>-->
+<!--<h1 id="ketqua" >-->
+<!--</h1>-->
+<!--<script>-->
+<!--function diemTrungBinh() {-->
+<!--    let toan = +document.getElementById("toan").value;-->
+<!--    let ly = +document.getElementById("ly").value;-->
+<!--    let hoa = +document.getElementById("hoa").value;-->
+<!--    let DTB = (toan+ly+hoa)/3;-->
+<!--    document.getElementById("ketqua").innerHTML=DTB;-->
+<!--}
+<!---->
+<!--.......................................................-->
+<!--     CACH 2 -->
+<!--    let math = +prompt('Nhap vao diem Toan')-->
+<!--    let phySical = +prompt('Nhap vao diem Ly')-->
+<!--    let cheMistry = +prompt('Nhap vao diem Hoa')-->
+<!--   console.log('Nhap vao diem Toan ',math)-->
+<!--    console.log('Nhap vao diem Ly',phySical)-->
+<!--    console.log('Nhap vao diem Hoa',cheMistry)-->
+<!--    let aveRage= (math+phySical+cheMistry)/3;-->
+<!--    document.write('Diem trung binh la : ',aveRage)-->
+<!--    -->
+<!--..................-->
+<!--<script>-->
+<!--    let person = prompt("Mời bạn nhập tên của mình", "Harry Potter");-->
+<!--    let text;-->
+<!--    if (person == null || person == "") {-->
+<!--        text = "Buồn quá, bạn không muốn nhập tên!";-->
+<!--    } else {-->
+<!--        text = "Xin chào " + person + "!";-->
+<!--    }-->
+<!--    console.log(text);-->
+<!--</script>-->
+<!--................ vi du ve ham PROMT-->
+<!--<script>-->
+<!--    let math = prompt('Nhap diem toan',"Diem toan");-->
+<!--    let phySical = prompt("Nhap diem ly","Diem ly");-->
+<!--    let cheMistry = prompt("Nhap diem hoa","Diem hoa");-->
+<!--    let averagee = (Number(math) + Number(phySical) + Number(cheMistry ))/3-->
+<!--    console.log('Diem trung binh la : ',averagee);-->
+<!--    document.write('Diem trung binh la : ',averagee)-->
+<!--</script>-->
+<br><br><br>
+<table align="center">
+    <tr align="center">
+
+        <td>Nhap diem toan <br> <input type="text" id="diemtoan"> </td>
+        <td>Nhap diem ly <br><input type="text" id="diemly"></td>
+        <td>Nhap diem hoa <br><input type="text" id="diemhoa"></td>
+        <td><br><button onclick="diemtb()" >DTB</button></td>
+    </tr>
+
+</table>
+
+<script>
+    function diemtb() {
+        let math = +document.getElementById('diemtoan').value;
+        let phySical = +document.getElementById('diemly').value;
+        let cheMistry = +document.getElementById('diemhoa').value;
+        let average = (math + phySical + cheMistry)/3;
+        document.write('Diem trung binh la :',average);
+    }
+
+</script>
+
+</body>
+</html>

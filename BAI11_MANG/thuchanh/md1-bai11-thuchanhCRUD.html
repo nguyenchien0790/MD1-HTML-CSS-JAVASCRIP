@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD</title>
+</head>
+<body>
+<table border="1" style="width: 100% "align="center">
+    <th>STT</th>
+    <th>NAME</th>
+    <tbody id="drawTable">
+    </tbody>
+</table>
+<input id="newStudent">
+<button >ThemSV</button>
+<script>
+    let listStudents = ['hung','huy','chinh','phu',chi]
+    function showListStudent() {
+        let  drawTable = '';
+        // cach  1 cong chuuoi thong thuonmg trong '' cac bien se dc building qua dau +
+        for (let i = 0; i < listStudent.length; i++) {
+            let j = i+1; khai bao bien j thay vao cho (i+1)
+
+            // drawTable+= '<tr>'+
+            //     '<td>'+(i+1)+'<td>'+
+            //     '<td>'+listStudents[i]+'<td>'
+            // +'<tr>'
+            // .............
+            //cach 2 su dung string templage  js6 chuoi o trong `` cac bien se duoc building quan ${}
+
+            draw += `<tr>
+                      <td>${i}</td>
+                      <td>$listStudent[[i]</td>
+                      <td><button onclick="updateStudent(${i})">Edit</button></td>
+                      </tr>
+             `
+
+
+
+        }
+        document.getElementById('drawTable').innerText = drawTable;
+    }
+    showListStudent();
+    function createStudent() {
+        let  newStudent = document.getElementById('newStudent').value;
+
+    }
+    function updateStudent(id) {
+        console.log('====',id)
+        let editStudent = prompt('enter the namme to update Student',listStudents[id])
+        listStudents[id] = editStudent;
+        showListStudent();
+
+    }
+
+
+</script>
+
+
+
+</body>
+</html>

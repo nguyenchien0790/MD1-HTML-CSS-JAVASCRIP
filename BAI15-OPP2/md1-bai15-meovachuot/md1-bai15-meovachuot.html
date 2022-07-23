@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class Animal {
+        constructor(name, weight, speed, sound) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+            this.sound = sound;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        setName(name) {
+            this.name = name;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+        setName(weight) {
+            this.weight = weight;
+        }
+
+        getSpeed() {
+            return this.speed;
+        }
+
+        setSpeed(speed) {
+            this.speed = speed;
+        }
+
+        getSound() {
+            return this.sound;
+        }
+
+        setSound(sound) {
+            this.sound = sound;
+        }
+    }
+
+    class Rat extends Animal {
+        constructor(name, weight, speed, sound,status) {
+            super(name, weight, speed, sound);
+            this.status = status;
+        }
+
+    }
+
+    class Cat {
+        constructor(name, weight, speed, sound) {
+            this.name = name;
+            this.weight = weight;
+            this.speed = speed;
+            this.sound = sound;
+        }
+
+        getWeight() {
+            return this.weight;
+        }
+
+        setWeight(weight) {
+            this.weight = weight;
+        }
+
+        catchRat(rat) {
+            if (rat.getSpeed() < this.getWeight()) {
+
+            }
+        }
+    }
+
+</script>
+</body>
+</html>

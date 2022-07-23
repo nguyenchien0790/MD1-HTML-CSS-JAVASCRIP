@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UDtudein</title>
+</head>
+<body>
+<h1 style="color: blue" id="hienthi" ></h1>
+<script>
+    let tiengAnh = ['repository', 'push', 'pull', 'local Repository' , 'remote repository' ];
+    let tiengViet = ['Kho', 'Đẩy lên', 'Kéo về', 'Kho lưu trữ cục bộ' , 'Kho lưu trữ từ xa'];
+    let nhap = prompt('Nhập từ cần tra cứu trong kho dữ liệu : repository,push, pull,local repository,remote repository');
+
+
+        if(tiengAnh.indexOf(nhap.toLowerCase()) !== -1){
+            document.getElementById('hienthi').innerText ='Nghĩa của từ vừa nhập là : '+ tiengViet[tiengAnh.indexOf(nhap.toLowerCase())];
+        } else {
+            document.getElementById('hienthi').innerText = 'Tù này chưa được câp nhật trong kho dữ liệu';
+        }
+
+
+</script>
+
+</body>
+</html>

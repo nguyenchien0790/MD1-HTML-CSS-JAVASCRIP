@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai5-chuyendoitiente</title>
+</head>
+<body>
+<br><br>
+<table style="width:500px" align="center">
+    <tr>
+        <td><b>Amount</b></td>
+        <td><b>From Currency</b></td>
+        <td><b>To Currency</b></td>
+        <td></td>
+
+    </tr>
+    <tr>
+        <td><input type="text" id="sotien"></td>
+        <td>
+            <select id="from">
+                <option value="viet">VND</option>
+                <option value="my">USD</option>
+            </select>
+        </td>
+        <td>
+            <select id="to">
+                <option value="viet">VND</option>
+                <option value="my">USD</option>
+            </select>
+        </td>
+        <td>
+            <button onclick="doitien()">CHUYEN</button>
+        </td>
+    </tr>
+
+</table>
+
+
+<script>
+    function doitien() {
+        let from = document.getElementById("from").value;
+        let to = document.getElementById("to").value;
+        let input = +document.getElementById("sotien").value;
+
+        if (from == to) {
+            if (from == "VND") {
+                document.write('So tien chuyen la : ' + input + ' DOLLAR')
+
+            } else {
+                document.write('So tien chuyen la : ' + input + ' VND')
+
+            }
+
+        } else {
+            if (from == "viet") {
+                input = input / 23000;
+                document.write('So tien chuyen la : ' + input + ' USD')
+
+            } else {
+                input = input * 23000;
+                document.write('So tien chuyen la : ' + input + ' VND')
+            }
+        }
+
+
+    }
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

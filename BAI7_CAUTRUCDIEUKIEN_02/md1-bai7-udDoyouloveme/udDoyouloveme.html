@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOYOULOVEME</title>
+    <style>
+        button{
+            position: absolute;
+        }
+        button{
+            border-radius:50%;
+        }
+    </style>
+
+</head>
+<body>
+<div align="center">
+<h1 style="color: red " >DO YOU LOVE ME?</h1>
+    <button id="noBut" onmouseover="moveRandom()" style="width: 50px;height: 50px"><b>No</b></button>
+
+<button onclick="alert('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' +
+ 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA' +
+  'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+  )" style="top: 100px; left: 1000px;width: 50px;height: 50px" >Yes</button>
+</div>
+<script>
+    document.getElementById('noBut').style.top = '100px';
+    document.getElementById('noBut').style.left = '850px';
+
+    function moveRandom() {
+        let windowHeight = window.innerHeight;
+        let windowWidth = window.innerWidth;
+        console.log(windowWidth)
+        document.getElementById('noBut').style.top = Math.floor(Math.random() * (windowHeight -50)) + 'px'
+        document.getElementById('noBut').style.left = Math.floor(Math.random() * (windowWidth - 50)) + 'px'
+
+    }
+</script>
+
+</body>
+</html>
+

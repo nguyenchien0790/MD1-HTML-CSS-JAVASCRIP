@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 align="center">CRUD - JAVASCRIP - OOP</h1>
+<input id="newFruit" type="text" >
+<button onclick="creatFruit()"> Creat</button>
+<input id="search" placeholder="Search ..." type="text" oninput="actionSearch()">
+<span id="validate"></span>
+<table border="1" style="width: 100%; text-align: center">
+    <th>STT</th>
+    <th>NAME</th>
+    <th>EDIT</th>
+    <th>DELETE</th>
+    <tbody id="drawTable">
+    </tbody>
+</table>
+<script>
+    let listFruit = ['Cam','Buoi','Mit','Xoai'];
+    let listSearch = [];
+    function showListFruit() {
+        let drawTable='';
+        for (let i =0;i <listFruit.length;i++) {
+            // Cach1 ve bang bang cach cong chuoi ''
+            // drawTable+= '<tr>'+
+            //     '<td>'+(i+1)+'</td>'+
+            //     '<td>'+listFruit[i]+'</td>'
+            // +'</tr>'
+
+            // Cach 2 : Su dung String Templage JG6 chuoi o trong `` cac bien se duoc building qua ${}
+            drawTable += `<tr>
+                           <td>${i+1}</td>
+                           <td>${listFruit[i]}</td>
+                           <td><button onclick="updateFruit(${i})">Edit</button></td>
+                           <td><button onclick="deleteFruit(${i})">Delete</button></td>
+                        </tr>`
+
+        }
+        document.getElementById('drawTable').innerHTML = drawTable;
+    }showListFruit();
+function creatFruit() {
+        let newFruit =document.getElementById('newFruit').value;
+        if (newFruit.trim()===''){
+            document.getElementById('validate').innerHTML ='  <span style="color: red">The name not Empty</span>'
+        }else {
+            listFruit.push(newFruit);
+            showListFruit();
+            document.getElementById('validate').innerHTML ='  <span style="color: blue">Create Success!!!</span>'
+        }
+
+}
+function updateFruit(id) {
+    console.log('==========',id);
+    let editFruit = prompt('Update Fruit',listFruit[id]);
+    if(editFruit.trim()===''){
+        document.getElementById('validate').innerHTML ='  <span style="color: red">The name not Empty</span>'
+    }else{
+        listFruit[id] = editFruit;
+        document.getElementById('validate').innerHTML ='  <span style="color: blue">Update Success!!!</span>'
+        showListFruit();
+    }
+}
+function deleteFruit(id) {
+    listFruit.splice(id,1);
+    showListFruit();
+}
+function showListSearch() {
+    let drawTable = '';
+    for (let i = 0; i < listSearch.length; i++) {
+        drawTable += `<tr>
+                           <td>${i + 1}</td>
+                           <td>${listSearch[i]}</td>
+                           <td><button onclick="updateFruit(${i})">Edit</button></td>
+                           <td><button onclick="deleteFruit(${i})">Delete</button></td>
+                        </tr>`
+
+    }document.getElementById('drawTable').innerHTML = drawTable;
+}
+    function actionSearch() {
+        let search = document.getElementById('search').value;
+        listSearch=[];
+        if (search.trim()===''){
+            showListFruit();
+            return;
+        }
+        for (let i = 0; i < listFruit.length; i++) {
+            if (search.toLowerCase() === listFruit[i].toLowerCase()) {
+                listSearch.push(listFruit[i])
+            }
+
+        }showListSearch();
+
+    }
+
+
+</script>
+</body>
+</html>

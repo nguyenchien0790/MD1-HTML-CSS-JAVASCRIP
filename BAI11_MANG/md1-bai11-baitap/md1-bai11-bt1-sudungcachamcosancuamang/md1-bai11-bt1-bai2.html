@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>baitap2</title>
+</head>
+<body>
+<h1>Nhap phan tu cua mang</h1>
+
+    <input id="nhap" type="text">
+        <button onClick="result()">result</button>
+        <script>
+            function result(){
+            let number = document.getElementById("nhap").value
+            let a = []
+            for (let i = 0 ; i <number.length;i++){
+            if ((number[i]%2==0) && (number[i+1]%2==0)){
+            a.push(number[i],'-');
+        }else {
+            a.push(number[i]);
+        }
+        }document.write(a.join(""))
+        }
+
+
+
+
+</script>
+</body>
+</html>

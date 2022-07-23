@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<table border="5" align="center" style="height: 200px; width: 250px " >
+    <tr align="center">
+        <td colspan="4">
+            <input type="text" id="display" style="width: 210px">
+        </td>
+    </tr>
+    <tr align="center" >
+        <td><button id="nutNhan" onclick="calculate('1')" style="width:40px">1</button></td>
+        <td><button id="nutNhan" onclick="calculate('2')" style="width:40px">2</button></td>
+        <td><button id="nutNhan" onclick="calculate('3')" style="width:40px">3</button></td>
+        <td><button id="nutNhan" onclick="calculate('+')" style="width:40px">+</button></td>
+    </tr>
+    <tr align="center">
+        <td><button id="nutNhan" onclick="calculate('4')" style="width:40px">4</button></td>
+        <td><button id="nutNhan" onclick="calculate('5')" style="width:40px">5</button></td>
+        <td><button id="nutNhan" onclick="calculate('6')" style="width:40px">6</button></td>
+        <td><button id="nutNhan" onclick="calculate('-')" style="width:40px">-</button></td>
+    </tr>
+    <tr align="center">
+        <td><button id="nutNhan" onclick="calculate('7')" style="width:40px">7</button></td>
+        <td><button id="nutNhan" onclick="calculate('8')" style="width:40px">8</button></td>
+        <td><button id="nutNhan" onclick="calculate('9')" style="width:40px">9</button></td>
+        <td><button id="nutNhan" onclick="calculate('*')" style="width:40px">*</button></td>
+    </tr>
+    <tr align="center">
+        <td><button id="nutNhan" onclick="reset()" style="width:40px">C</button></td>
+        <td><button id="nutNhan" onclick="calculate('0')" style="width:40px">0</button></td>
+        <td><button id="nutNhan" onclick="answer()" style="width:40px">=</button></td>
+        <td><button id="nutNhan" onclick="calculate('/')" style="width:40px">/</button></td>
+    </tr>
+</table>
+
+<script>
+
+    function calculate(a) {
+        document.getElementById('display').value += a;
+    }
+    function reset() {
+        document.getElementById('display').value = null
+    }
+    function answer() {
+        if (document.getElementById('display').value)
+            document.getElementById('display').value = eval(document.getElementById('display').value)
+    }
+
+
+</script>
+
+</body>
+</html>

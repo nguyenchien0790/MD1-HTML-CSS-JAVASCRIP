@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Bai8</title>
+</head>
+<body>
+
+<button id="play" onclick="play()">Chơi</button>
+
+<script>
+
+  function play() {
+    let min = +prompt('Đoán số trong khoảng từ: ')
+    let max = +prompt('Đến:')
+    let ran = Math.floor(Math.random() * (max + 1 - min)) + min
+    console.log(ran);
+    while(1){
+      let guess = +prompt('Đoán đi: ')
+      if(guess > ran){
+        alert('Thấp hơn!');
+      } else if (guess < ran){
+        alert('Cao hơn!');
+      } else {
+        document.getElementById('play').innerText = 'Chơi lại';
+        alert('Đúng rồi.');
+        break;
+      }
+    }
+  }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  class Button {
+    constructor(status) {
+      this.status = status;
+    }
+
+    turnOn() {
+      this.status = true;
+    }
+
+    turnOff() {
+      this.status = false;
+    }
+
+    getStatus() {
+      return this.status;
+    }
+  }
+
+  class ElectricLamp {
+    constructor(statusLamp) {
+      this.status = statusLamp;
+    }
+
+    getStatusLamp() {
+      return this.statusLamp;
+    }
+
+    onOff(btn) {
+      if (btn.getStatus()) {
+        this.status = true;
+      } else {
+        this.status = false;
+      }
+    }
+
+    // turnOff(){
+    //     this.status = false;
+    // }
+  }
+
+  let btn1 = new Button();
+  let lamp1 = new ElectricLamp();
+
+</script>
+</body>
+</html>

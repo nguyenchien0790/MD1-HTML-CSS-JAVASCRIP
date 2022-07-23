@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Thuc hanh 1</title>
+</head>
+<body>
+<script>
+    // let c=0;
+    //
+    // while (c++<10){
+    //     c++;
+    //     console.log('in',c);
+    //     document.write('in c :',c );
+    // }
+    // console.log(c)
+
+// ............................................
+//     for (var i=0;i<10;i++);
+//     console.log(i)
+//
+// ............................................
+//     let c=0;
+//     do {
+//         c++;
+//         console.log('in',c)
+//     }while (c++<10);
+//     console.log(c)
+//
+// .............................................
+
+
+//     let text="";
+//     let i ;
+//     for (i=0;i<5;i++){
+//         text +='the number is '+i+"<br>";
+//     }
+//     document.write(text);
+//
+//     console.log(text);
+//
+// ....................................................
+
+    // let text = "";
+    // let i;
+    // for (i=1;i<100;i++){
+    //     text += i + '<br>';
+    // }
+    // document.write(text);
+    // alert('Da hoang thanh')
+    //     ............................
+
+//     let f1=1 , f2=1;
+//     document.writeln(f1);
+//     document.writeln(f2);
+//
+//
+//     for (let i=0;i<18;i++) {
+//         let f3 = f2  + f1;
+//         f1=f2;
+//         f2=f3;
+//         document.writeln(f3);
+//     }
+// .............................
+//
+//     let i = 1
+//     let s = 0
+//     for(i=1,i<31,i++){
+//         s= s
+//     }
+//     document.write('Tong S',s);
+// ..................................
+
+
+    // C code to print a HEART Shape
+    #include<stdio.h>
+
+    int main()
+    {
+        // HERE, we have set the size of Heart, size = 10
+        // int a, b, size = 15;
+        let a
+        let b
+
+        /* FOR THE APEX OF HEART */
+        for (a = size/2; a <= size; a = a+2)
+        {
+            // FOR SPACE BEFORE PEAK-1 : PART 1
+            for (b = 1; b < size-a; b = b+2)
+                printf(" ";
+
+            // FOR PRINTING PEAK-1 : PART 2
+            for (b = 1; b <= a; b++)
+                printf("A");
+
+            // FOR SPACE B/W PEAK-1 AND PEAK-2 : PART 3
+            for (b = 1; b <= size-a; b++)
+                printf(" ");
+
+            // FOR PRINTING PEAK-2 : PART 4
+            for (b = 1; b <= a-1; b++)
+                printf("A");
+
+            printf("\n");
+        }
+
+        /*FOR THE BASE OF HEART ie. THE INVERTED TRIANGLE */
+
+        for (a = size; a >= 0; a--)
+        {
+            // FOR SPACE BEFORE THE INVERTED TRIANGLE : PART 5
+            for (b = a; b < size; b++)
+                printf(" ");
+
+            // FOR PRINTING THE BASE OF TRIANGLE : PART 6
+            for (b = 1; b <= ((a * 2) - 1); b++)
+                printf("B");
+
+            printf("\n");
+        }
+    }
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>md1-bai4-sosanh3so</title>
+</head>
+<body>
+<input type="text" id="sothunhat">&ensp;<input type="text" id="sothuhai">&ensp;<input type="text"  id="sothuba" >
+
+<h1 id="ketqua">  </h1>
+
+<button onclick="sosanh()">So sanh</button>
+<script>
+    function sosanh() {
+
+        let number1 = +document.getElementById("sothunhat").value;
+        let number2 = +document.getElementById("sothuhai").value;
+        let number3 = +document.getElementById("sothuba").value;
+        let max = number1
+        if (number2 > max){
+            max = number2
+        }
+        if (number3>max) {
+            max = number3
+        }
+
+        document.getElementById('ketqua').innerText = 'So lon nhat la ' + max
+    }
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai9</title>
+</head>
+<body>
+
+<script>
+
+    function search(chuoi, kytu) {
+        count = 0;
+        for (let i = 0; i < chuoi.length; i++) {
+            if(chuoi[i] == kytu){
+                count++;
+            }
+        }
+        return count == 0 ? -1 : count;
+    } document.write("So ky tu trong chuoi la : "+ search('nguyen minh chien', 'n'));
+
+</script>
+
+</body>
+</html>

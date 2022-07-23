@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+<button onclick="toggle(this.id)" id="nut1">OFF</button>
+<button id="pin1"></button>
+<button onclick="sendMessage(this.id)" id="send1">SEND</button>
+<button onclick="charge(this.id)" id="charge1">CHARGE</button>
+<br>
+<textarea cols="30" rows="5" id="message1" style="background-color: gray; color: white" disabled></textarea>
+<br>
+<button onclick="getInbox(this.id)" id="inbox1">INBOX</button>
+<button onclick="getOutbox(this.id)" id="outbox1">OUTBOX</button>
+<br>
+<hr>
+<button onclick="toggle(this.id)" id="nut2">OFF</button>
+<button id="pin2"></button>
+<button onclick="sendMessage(this.id)" id="send2">SEND</button>
+<button onclick="charge(this.id)" id="charge2">CHARGE</button>
+<br>
+<textarea cols="30" rows="5" id="message2" style="background-color: gray; color: white" disabled></textarea>
+<br>
+<button onclick="getInbox(this.id)" id="inbox2">INBOX</button>
+<button onclick="getOutbox(this.id)" id="outbox2">OUTBOX</button>
+<br>
+</div>
+<script>
+
+    class Mobile {
+        constructor(name, pin) {
+            this.name = name;
+            this.pin = pin;
+            this.sentMessages = [];
+            this.recievedMessages = [];
+            this.status = false;
+            this.unreadMessage = 0;
+            this.isCharging = false;
+        }
+
+        getIsCharging() {
+            return this.isChagring;
+        }
+
+        setIsCharging(boolean) {
+            this.isCharging = boolean
+        }
+
+        getUnreadMessage() {
+            return this.unreadMessage;
+        }
+
+        setUnreadMessage(value) {
+            this.unreadMessage = value;
+        }
+
+        getName() {
+            return this.name;
+        }
+
+        setName(value) {
+            this.name = value;
+        }
+
+        getPin() {
+            return this.pin;
+        }
+
+        setPin(value) {
+            this.pin = value > 100 ? 100 : value;
+        }
+
+        getReceivedMessages() {
+            return this.recievedMessages;
+        }
+
+        setReceivedMessages(array) {
+            this.recievedMessages = array;
+        }
+
+        getSentMessages() {
+            return this.sentMessages;
+        }
+
+        setSentMessages(array) {
+            this.sentMessages = array;
+        }
+    }
+
+    let mobile1 = new Mobile('nokia', 80);
+    let mobile2 = new Mobile('iphone', 80);
+
+    document.getElementById('pin1').innerText = mobile1.getPin() + '%';
+    document.getElementById('pin2').innerText = mobile2.getPin() + '%';
+
+    function toggle(id) {
+        if (id === 'nut1') {
+            mobile1.status = !mobile1.status;
+            document.getElementById('nut1').innerText = mobile1.status ? 'ON' : 'OFF';
+            document.getElementById('message1').style.background = mobile1.status ? 'aqua' : 'gray';
+            document.getElementById('message1').disabled = false;
+            if (!mobile1.status) {
+                document.getElementById('message1').value ='';
+                document.getElementById('message1').disabled = true;
+            }
+        } else {
+            mobile2.status = !mobile2.status;
+            document.getElementById('nut2').innerText = mobile2.status ? 'ON' : 'OFF';
+            document.getElementById('message2').style.background = mobile2.status ? 'yellow' : 'gray';
+            document.getElementById('message2').disabled = false;
+            if (!mobile2.status) {
+                document.getElementById('message2').value = '';
+                document.getElementById('message2').disabled = true;
+            }
+        }
+    }
+
+    function sendMessage(id) {
+        if (id === 'send1') {
+            if (mobile1.status) {
+                if (document.getElementById('message1').value.length === 0) {
+                    return;
+                }
+                if (mobile1.getPin() > 0) {
+                    mobile1.sentMessages.push(document.getElementById('message1').value);
+                    mobile2.unreadMessage++;
+                    let s = mobile2.unreadMessage > 1 ? 's.' : '.';
+                    document.getElementById('message2').value = 'You have ' + mobile2.unreadMessage + ' unread message' + s;
+                    mobile2.setReceivedMessages(mobile1.getSentMessages());
+
+                    mobile1.setPin(mobile1.getPin() - 1);
+                    document.getElementById('pin1').innerText = mobile1.getPin() + '%';
+                }
+            }
+        } else {
+            if (mobile2.status) {
+                if (document.getElementById('message2').value.length === 0) {
+                    return;
+                }
+                if (mobile2.getPin() > 0) {
+                    mobile2.sentMessages.push(document.getElementById('message2').value);
+                    mobile1.unreadMessage++;
+                    let s = mobile1.unreadMessage > 1 ? 's.' : '.';
+                    document.getElementById('message1').value = 'You have ' + mobile1.unreadMessage + ' unread message' + s;
+                    mobile1.setReceivedMessages(mobile2.getSentMessages());
+                    mobile2.setPin(mobile2.getPin() - 1);
+                    document.getElementById('pin2').innerText = mobile2.getPin() + '%';
+                }
+
+            }
+        }
+    }
+
+    function getInbox(id) {
+        if (id === 'inbox1') {
+            if (mobile1.status) {
+                document.getElementById('message1').value = mobile1.getReceivedMessages().join('\n');
+                mobile1.setUnreadMessage(0);
+            }
+        } else {
+            if (mobile2.status) {
+                document.getElementById('message2').value = mobile2.getReceivedMessages().join('\n');
+                mobile2.setUnreadMessage(0);
+            }
+        }
+
+    }
+
+    function getOutbox(id) {
+        if (id === 'outbox1') {
+            if (mobile1.status) {
+                document.getElementById('message1').value = mobile1.getSentMessages().join('\n');
+            }
+        } else {
+            if (mobile2.status) {
+                document.getElementById('message2').value = mobile2.getSentMessages().join('\n');
+            }
+        }
+    }
+
+    function charge(id) {
+        if (id === 'charge1') {
+            if (!mobile1.getIsCharging()) {
+                document.getElementById(id).style = 'background: green; color: white';
+                mobile1.setIsCharging(!mobile1.getIsCharging());
+
+                charging1 = setInterval(function () {
+                    mobile1.setPin(mobile1.getPin() + 1);
+                    document.getElementById('pin1').innerText = mobile1.getPin() + '%';
+                }, 600)
+            } else {
+                document.getElementById(id).style = '';
+                mobile1.setIsCharging(!mobile1.getIsCharging());
+                clearInterval(charging1);
+            }
+        } else {
+            if (!mobile2.getIsCharging()) {
+                document.getElementById(id).style = 'background: green; color: white';
+                mobile2.setIsCharging(!mobile2.getIsCharging());
+
+                charging2 = setInterval(function () {
+                    mobile2.setPin(mobile2.getPin() + 1);
+                    document.getElementById('pin2').innerText = mobile2.getPin() + '%';
+                }, 600)
+            } else {
+                document.getElementById(id).style = '';
+                mobile2.setIsCharging(!mobile2.getIsCharging());
+                clearInterval(charging2);
+            }
+        }
+    }
+
+    setInterval(pinDecrease, 1000);
+
+    function pinDecrease() {
+        if (mobile1.status) {
+            if (mobile1.getPin() < 1) {
+                mobile1.status = false;
+                document.getElementById('nut1').innerText = 'OFF';
+                document.getElementById('message1').value = '';
+                document.getElementById('message1').style.background = 'gray';
+                document.getElementById('message1').disabled = true;
+                return;
+            }
+            mobile1.setPin(mobile1.getPin() - 1);
+            document.getElementById('pin1').innerText = mobile1.getPin() + '%';
+        }
+        if (mobile2.status) {
+            if (mobile2.getPin() < 1) {
+                mobile2.status = false;
+                document.getElementById('nut2').innerText = 'OFF';
+                document.getElementById('message2').value = '';
+                document.getElementById('message1').style.background = 'gray';
+                document.getElementById('message2').disabled = true;
+                return;
+            }
+            mobile2.setPin(mobile2.getPin() - 1);
+            document.getElementById('pin2').innerText = mobile2.getPin() + '%';
+        }
+    }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CRUD-OOP</title>
+    <script src="Category.js"></script>
+    <script src="Song.js"></script>
+    <link rel="stylesheet" href="table.css">
+</head>
+<body>
+
+<h1 align="center" style="color: #0F1C3F">CRUD - JAVASCRIP - OOP</h1>
+<hr>
+    <h2>Các dòng nhạc yêu thích</h2>
+    Thêm dòng nhạc <input id="newCategory" type="text">
+    <button onclick="createCategory()" style="border: none ; background-color: #0F1C3F;color: #CCCCCC"><b>Thêm</b>
+    </button>&ensp;&ensp;&ensp;
+    <span id="validate"></span>
+<br><br>
+<table>
+    <th>STT</th>
+    <th>LOẠI NHẠC</th>
+    <th>SỬA</th>
+    <th>XÓA</th>
+    <tbody id="drawTable">
+    </tbody>
+</table>
+<br>
+<hr>
+    <h2>Thêm bài hát</h2>
+    Tên bài hát <br>
+    <input id="nameSong" type="text"><br><br>
+    Lời bài hát <br>
+    <textarea name="" id="lyricSong" cols="120" rows="10"></textarea>
+    <select id="baiHat">
+    </select><br><br>
+    <button onclick="createSong()" style="width: 80px;border: none ; background-color: #0F1C3F;color: #CCCCCC">Tạo bài</button>
+<br><br>
+<hr>
+<div>
+<h2>Danh sách bài hát</h2>
+<table>
+    <th>STT</th>
+    <th>TÊN BÀI HÁT</th>
+    <th>LỜI BÀI HÁT</th>
+    <th>THỂ LOẠI NHAC</th>
+    <tbody id="drawTableSong">
+    </tbody>
+</table>
+</div>
+<script>
+    let listCategory = [];
+    let listSong = [];
+
+    let ct1 = new Category(1, 'Nhạc vàng')
+    let ct2 = new Category(2, 'Nhạc đỏ')
+    let ct3 = new Category(3, 'Nhạc trẻ')
+    let ct4 = new Category(4, 'Rock')
+    listCategory.push(ct1, ct2, ct3, ct4);
+
+    function showListCategory() {
+        let drawTable = '';
+        let class_tr = '';
+        for (let i = 0; i < listCategory.length; i++) {
+            drawTable += `<tr class="${class_tr}">
+                              <td>${listCategory[i].id = i + 1}</td>
+                              <td>${listCategory[i].name}</td>
+                              <td><button onclick="updateCategory(${listCategory[i].id})" style="background-color:#456BD9;color: white;border: none">Sửa</button></td>
+                              <td><button onclick="deleteCategory(${listCategory[i].id})" style="background-color:#ff4456;color: white;border: none">Xóa</button></td>
+                         </tr>`
+        }
+        document.getElementById('drawTable').innerHTML = drawTable;
+        let baiHat = ""
+        for (let i = 0; i < listCategory.length; i++) {
+            let value = listCategory[i].name;
+            baiHat += `<option value="${value}">${listCategory[i].name}</option>`
+        }
+        document.getElementById('baiHat').innerHTML = baiHat;
+        console.log(drawTable)
+    }showListCategory();
+
+
+    function createCategory() {
+        let newCategory = document.getElementById('newCategory').value
+        let check = true;
+        if (newCategory.trim() === '') {
+            document.getElementById('validate').innerHTML = '<span style="color:red">Xin nhập tên loại nhạc ...</span>'
+            return;
+        } else {
+            for (let c = 0; c < listCategory.length; c++) {
+                if (newCategory.toLowerCase() === listCategory[c].name.toLowerCase()) {
+                    check = false;
+                }
+            }
+            if (!check) {
+                document.getElementById('validate').innerHTML = '<span style="color: darkgreen">Loại nhạc này đã có...</span>'
+            }
+        }
+        if (check) {
+            listCategory.push(new Category(listCategory[listCategory.length - 1].id + 1, newCategory))
+            document.getElementById('validate').innerHTML = '<span style="color: blue">Đã thêm thành công!!!</span>'
+        }
+        showListCategory();
+    }
+
+    // function updateCategory(id) {
+    //     for (let i = 0; i < listCategory.length; i++) {
+    //         if (listCategory[i].id == id) {
+    //             let editCategory = prompt('editCategory: ', listCategory[i].name)
+    //             if (editCategory.trim()===""){
+    //                 document.getElementById('validate').innerHTML = '<span style="color:red">Không được để trống...</span>'
+    //             }else {
+    //                 listCategory[i].setName(editCategory);
+    //                 document.getElementById('validate').innerHTML = '<span style="color: blue">Đã sửa thành công!!!</span>';
+    //             }
+    //
+    //         }
+    //     }
+    //     showListCategory();
+    // }
+
+    function updateCategory(id) {
+        let check2 = false
+        let editCategory = prompt("Sửa loại nhạc", listCategory[id - 1].name);
+        if (editCategory.trim() === '') {
+            document.getElementById("validate").innerHTML = '<span style="color: #ff0000">Không để trống...</span>'
+            return;
+        } else {
+            for (let i = 0; i < listCategory.length; i++) {
+                if (listCategory[i].name.toLowerCase() === editCategory.toLowerCase()) {
+                    check2 = true;
+                    document.getElementById("validate").innerHTML = '<span style="color: orange">Loại nhạc này đã có...</span>'
+                }
+            }
+        }
+        if (!check2) {
+            listCategory[id - 1].setName(editCategory)
+            document.getElementById('validate').innerHTML = '<span style="color:#456BD9">Đã sửa thành công!!!</span>'
+        }
+        showListCategory();
+    }
+
+    function deleteCategory(id) {
+        let xacNhan = confirm("Bạn chắc chắn muốn xóa không ?")
+        for (let i = 0; i < listCategory.length; i++) {
+            if (listCategory[i].id === id) {
+                if (xacNhan){
+                    listCategory.splice(i, 1);
+                }
+            }
+        }
+        showListCategory();
+    }
+
+    function showListSong() {
+        let drawTableSong = '';
+
+        for (let i = 0; i < listSong.length; i++) {
+            drawTableSong += `<tr">
+                                 <td>${listSong[i].id = i + 1}</td>
+                                 <td>${listSong[i].name}</td>
+                                 <td>${listSong[i].lyrics}</td>
+                                 <td>${listSong[i].category}</td>
+                              </tr>`
+        }
+        document.getElementById('drawTableSong').innerHTML = drawTableSong;
+
+    }showListSong();
+
+    function createSong() {
+        let nameSong = document.getElementById('nameSong').value;
+        let lyricSong = document.getElementById('lyricSong').value;
+        let musicType = document.getElementById('baiHat').value;
+        let number = 0;
+        if (listSong.length == 0) {
+            number = 1;
+        }
+        else {
+            number = listSong[listSong.length - 1].id + 1;
+        }
+        let newSong = new Song(number, nameSong, lyricSong, musicType);
+        listSong.push(newSong);
+        showListSong();
+    }
+
+</script>
+</body>
+</html>

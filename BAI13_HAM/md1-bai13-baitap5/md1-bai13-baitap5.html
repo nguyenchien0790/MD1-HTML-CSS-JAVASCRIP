@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+    th {
+      text-align: left;
+      width: 50%;
+    }
+
+    td {
+      width: 25%;
+      padding: 6px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:last-child td {
+      border-bottom: 3px solid #f2f2f2;
+    }
+
+
+  </style>
+</head>
+<body>
+
+<div style="width: 700px; margin: auto" align="center">
+  <span><b style="font-size: larger">Sản phẩm mới</b></span>
+  <br><br>
+  <div style="padding: 25px; width: 50%; background-color: #f2f2f2; border-radius: 5px">
+    <input type="text" placeholder="Nhập sản phẩm mới" id="input">
+    <button id="add" onclick="addList()">Add</button>
+  </div>
+  <br><br>
+  <span><b style="font-size: larger"></b></span>
+  <br><br><br>
+  <table width="100%" style="border-collapse: collapse">
+    <th>Sản phẩm</th>
+    <th colspan="2" id="count" style="text-align: right; color: #a6363a; padding: 10px"></th>
+    <tbody id="body">
+
+    </tbody>
+
+  </table>
+  <br>
+  <span id="alert"></span>
+</div>
+
+<script>
+
+  let productList = ['ipone 2', 'ipone 3g', 'ipon 4', 'ipone 5',' ipon  6' ];
+
+  showList();
+
+  function countList() {
+    document.getElementById('count').innerText = productList.length + ' products';
+  }
+
+  function addList() {
+    let input = document.getElementById('input').value;
+    if (input.trim() == '') {
+      document.getElementById('alert').innerHTML = '<span style="color: red">Không được để trống</span>'
+    } else {
+      productList.push(input);
+    }
+    showList();
+  }
+
+  function showList() {
+    let body = document.getElementById('body');
+    body.innerHTML = '';
+    for (let i = 0; i < productList.length; i++) {
+      body.innerHTML += `<tr><td>${productList[i]}</td>
+                                   <td><button onclick="editList(${i})">Edit</button></td>
+                                   <td><button onclick="deleteList(${i})">Delete</button></td>
+                               </tr>`;
+    }
+    countList();
+  }
+
+  function editList(id) {
+    let edit = prompt('Sửa sản phẩm : ', productList[id]);
+    if (edit.trim() == '') {
+      document.getElementById('alert').innerHTML = '<span style="color: red">Không để trống</span>'
+    } else {
+      productList[id] = edit;
+      document.getElementById('alert').innerHTML = '<span style="color: cornflowerblue">Sửa thành công</span>'
+    }
+    showList();
+  }
+
+  function deleteList(id) {
+    productList.splice(id, 1);
+    showList();
+  }
+
+
+</script>
+
+
+</body>
+</html>

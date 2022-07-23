@@ -1,0 +1,17 @@
+#myCanvas{
+    background: url("img/entrance.jpg");
+    background-size: cover;
+    position: absolute;
+    left: 250px;
+
+
+}
+#instruction{
+    background-color: bisque;
+    position: absolute;
+    left: 760px;
+}
+body {
+    margin: 0;
+    padding: 0;
+}

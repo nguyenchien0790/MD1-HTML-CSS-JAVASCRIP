@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>motaxdhinhchunhat</title>
+</head>
+<body>
+<table border="1" style="width: 1000px; height: 600px" >
+    <tr style="height: 30px">
+        <td>Nhập vào chiều rông : </td>
+        <td><input type="text" id="chieurong"></td>
+    </tr>
+    <tr style="height: 30px">
+        <td>Nhập vào chiều cao : </td>
+        <td><input type="text" id="chieudai"></td>
+    </tr>
+    <tr>
+        <td>Area of Rectangle</td>
+        <td><h3 id="dientich"></h3></td>
+    </tr>
+    <tr>
+        <td>Perimeter of Rectangle</td>
+        <td><h3 id="chuvi"></h3></td>
+    </tr>
+    <tr>
+        <td>
+            <button onclick="ketqua()">Show result</button>
+        </td>
+        <td>
+            <button onclick="reset()">Reset</button>
+        </td>
+    </tr>
+    <tr style="height: 400px"align="center">
+        <td colspan="2" >
+             <canvas id="myCanvas" style="border: 1px solid green;width: 900px; height: 380px  "></canvas>
+        </td>
+
+    </tr>
+
+</table>
+<script>
+    class Retangle {
+        width;
+        height;
+        constructor(width,height) {
+            this.width = width;
+            this.height = height;
+        }
+        getWidth(){
+            return this.width;
+        }
+        setWidth(width){
+            this.width=width;
+        }
+        getHeight(){
+            return this.height;
+        }
+        setHeight(){
+            this.height=height;
+        }
+        getArea(){
+            return this.width*this.height;
+        }
+        getPerimeter(){
+            return (this.width+this.height)*2;
+        }
+    }
+    // let rect1= new Retangle(20,30) khoi tao doi tuong ko qua bang
+
+    function ketqua() {
+        let width = +document.getElementById("chieudai").value;
+        let height =+document.getElementById("chieurong").value;
+        let rect = new Retangle(width,height)
+        let area = rect.getArea()
+        document.getElementById("dientich").innerText = area;
+        let perimeter = rect.getPerimeter()
+        document.getElementById("chuvi").innerText = perimeter;
+        let canvas =document.getElementById('myCanvas')
+        let ctx = canvas.getContext('2d')
+        ctx.fillRect(0,0,width,height)
+    }
+    function reset() {
+        document.getElementById('chieudai').value=" ";
+        document.getElementById('chieurong').value=" ";
+        document.getElementById('dientich').innerHTML=" ";
+        document.getElementById('chuvi').innerHTML=" ";
+        let canvas =document.getElementById('myCanvas');
+        let ctx =canvas.getContext('2d')
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    }
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

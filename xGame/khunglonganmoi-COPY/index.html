@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<canvas></canvas>
+<script src="UI.js"></script>
+<script src="Car.js"></script>
+<script src="Background.js"></script>
+<script>
+    //Canvas--------------------------------------------------------------------------------
+
+    const canvas = document.querySelector('canvas');
+    const c = canvas.getContext('2d');
+
+    canvas.width = 400;
+    canvas.height = 600;
+    canvas.style.border = '3px solid black';
+
+    //--------------------------------------------------------------------------------------
+
+    const keys = {
+        up: false,
+        down: false,
+        left: false,
+        right: false,
+        control: false,
+    }
+
+    const startPoint = {
+        x: 158,
+        y: 420
+    }
+
+    const playerImg = new Image();
+    playerImg.src = 'img/Player.png';
+    const playerImg1 = new Image();
+    playerImg1.src = 'img/Player1.png';
+
+    const carImg = new Image();
+    carImg.src = 'img/knight.png'
+
+    const car = new Player([playerImg, playerImg1], startPoint.x, startPoint.y);
+
+
+    const backgroundImg = new Image();
+    backgroundImg.src = 'img/background.png'
+
+    const background = new Background(backgroundImg, 5);
+
+
+    enemyArray = [];
+
+    function animate() {
+
+        background.draw();
+
+        enemyArray.forEach(carr => {
+            carr.init();
+            if (car.checkCollision(carr)) {
+                enemyArray.shift();
+                car.score++;
+            }
+        })
+
+        car.init();
+        c.font = '30px Arial';
+        c.fillText(`Score: ${car.score}`, 0, 30);
+        requestAnimationFrame(animate);
+    }
+
+    animate()
+
+
+    setInterval(randomEnemy, 1000);
+
+    function randomEnemy() {
+        enemyArray.push(new Car(carImg, Math.random() * (canvas.width - carImg.width), -carImg.height))
+    }
+
+
+    window.addEventListener('keydown', e => {
+        switch (e.keyCode) {
+            case 37:
+                keys.left = true;
+                break;
+            case 39:
+                keys.right = true;
+                break;
+            case 38:
+                keys.up = true;
+                break;
+            case 40:
+                keys.down = true;
+                break;
+            case 17:
+                keys.control = true;
+                break;
+        }
+    })
+    window.addEventListener('keyup', e => {
+        switch (e.keyCode) {
+            case 37:
+                keys.left = false;
+                break;
+            case 39:
+                keys.right = false;
+                break;
+            case 38:
+                keys.up = false;
+                break;
+            case 40:
+                keys.down = false;
+                break;
+            case 17:
+                keys.control = false;
+                break;
+        }
+    })
+
+</script>
+
+</body>
+</html>

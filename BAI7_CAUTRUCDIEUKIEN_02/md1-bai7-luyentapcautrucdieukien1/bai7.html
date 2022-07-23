@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai7</title>
+</head>
+<body>
+<!--Phí thuê bao bắt buộc là 25 nghìn.-->
+<!--800 đồng cho mỗi gọi của 50 phút đầu tiên.-->
+<!--600 đồng cho mỗi phút gọi của 150 phút tiếp theo.-->
+<!--200 đồng cho bất kỳ mỗi phút nào sau 200 phút đầu tiên-->
+<script>
+    let phiThueBao = 25000;
+    let tongPhutGoi =+prompt('Nhap so phut goi trong thang cua ban :');
+    let cuocPhi;
+    if (tongPhutGoi>=200){
+        cuocPhi=25000+(200*tongPhutGoi);
+
+    }else{
+            if (tongPhutGoi>=50){
+                cuocPhi=25000+(600*tongPhutGoi);
+            }else{
+                if (tongPhutGoi>=0&&tongPhutGoi<50){
+                    uocPhi=25000+(800*tongPhutGoi);
+                }
+            }
+        }
+
+
+    document.write('Tong cuoc phi trong thang cua ban la : ',cuocPhi);
+
+
+
+
+
+</script>
+
+
+
+
+
+
+</body>
+</html>

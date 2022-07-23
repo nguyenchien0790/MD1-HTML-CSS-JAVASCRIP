@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>md1bai7-baitap2</title>
+</head>
+<body>
+<div align="center">
+<h1>Tinh so ngay cua thang </h1>
+
+<input id="month">
+
+<button id="check" onclick="check()">so ngay</button>
+<br><br>
+
+<p id="result" >Ket qua: </p>
+
+<script>
+    function check() {
+        let input = +document.getElementById('month').value;
+        switch (input) {
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+            case 8:
+            case 10:
+            case 12:
+                document.getElementById('result').innerText = 'Result: Thang ' + input + ' 31 ngay';
+                break;
+            case 4:
+            case 6:
+            case 9:
+            case 11:
+                document.getElementById('result').innerText = 'Result: Thang ' + input + ' 30 ngay';
+                break;
+            case 2:
+                document.getElementById('result').innerText = 'Result: Thang ' + input + ' 28 ngay';
+                break;
+
+            default:
+                document.getElementById('result').innerText = 'Result: Xin nhap tu thang 1 den 12 ';
+        }
+    }
+</script>
+</div>
+
+</body>
+</html>

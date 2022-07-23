@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>kiemtra-bai2</title>
+</head>
+<body>
+<script>
+    let canhA = +prompt('Nhap chieu dai canh A');
+    let canhB = +prompt('Nhap chieu dai canh B');
+    let canhC = +prompt('Nhap chieu dai canh C');
+    if (canhA * canhA == canhB * canhB + canhC * canhC) {
+        document.write('Đây là tam giác vuông góc 90 độ tạo bởi cạnh B và cạnh C');
+    }else if (canhB * canhB == canhA * canhA + canhC * canhC) {
+        document.write('Đây là tam giác vuông góc 90 độ tạo bởi cạnh A và cạnh C');
+    }else if (canhC * canhC == canhA * canhA + canhB * canhB) {
+        document.write('Đây là tam giác vuông góc 90 độ tạo bởi cạnh A và cạnh B');
+    }
+
+
+    else {
+        document.write(" Không phải tam giác vuông rồi bé ơi ");
+    }
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+  let sao = ['Polaris', 'Aldebaran', 'Deneb', 'Vega', 'Altair', 'Dubhe', 'Regulus'];
+  let chomSao = ['Ursa Minor', 'Tarurus', 'Cygnus', 'Lyra', 'Aquila', 'Ursa Minor', 'Leo'];
+
+
+  function timKiem(timSao) {
+    for (let i =0; i<sao.length; i++) {
+      if(sao[i].toLowerCase() == timSao.toLowerCase()) {
+        return " Ngoi sao : "+sao[i]+  " - Thuoc chomn sao : " + chomSao[i];
+      }
+    }
+    return 'Sao nay chua co du lieu';
+  }document.write(timKiem(prompt('Nhap ngoi sao : Polaris ,Aldebaran, Deneb, Vega, Altair, Dubhe, Regulus')));
+
+</script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai5</title>
+</head>
+<body>
+<script>
+    let f1=1;
+    let f2=1;
+    let f3;
+    let s=f1 + f2;
+    for (let i = 0; i < 18; i++) {
+        f3=f2+f1;
+        f1=f2;
+        f2=f3;
+        s+=f3;
+        console.log(s)
+    }
+    document.write("tong 20 so dau tien day fibonacci la : ",s);
+
+
+
+
+</script>
+
+
+
+
+</body>
+</html>

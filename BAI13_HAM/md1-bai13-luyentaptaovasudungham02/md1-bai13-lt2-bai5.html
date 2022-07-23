@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bai5</title>
+</head>
+<body>
+<script>
+  let num1= +prompt('Nhap so thu nhat');
+  let num2= +prompt('Nhap so thu hai');
+  let num3= +prompt('Nhap so thu ba');
+  let arr=[];
+
+  function timSoNhoNhat() {
+      arr.push(num1,num2,num3);
+
+      let min=arr[0];
+      for (let i = 0; i< arr.length; i++) {
+          if (arr[i]<min){
+              min=arr[i];
+          }
+      }return min
+  }
+  document.write("So nho nhat la : " ,timSoNhoNhat());
+
+</script>
+
+
+
+</body>
+</html>

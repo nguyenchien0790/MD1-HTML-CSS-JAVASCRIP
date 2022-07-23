@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>md1-bai5-baimaytinh</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*.title{*/
+        /*    border-radius: 10px;*/
+        /*    margin-bottom: 10px;*/
+        /*    text-align:center;*/
+        /*    width: 210px;*/
+        /*    color:#ff4456;*/
+        /*    border: solid black 1px;*/
+        /*}*/
+        input[type="button"]
+        {
+            border-radius: 10px;
+            background-color:#ff4456;
+            color: blue;
+            border-color:#ff4456 ;
+            width:100%;
+        }
+        input[type="text"]
+        {
+            border-radius: 10px;
+            text-align: right;
+            background-color:white;
+            border-color: black ;
+            width:100%
+        }
+    </style>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td colspan="4"><input type="text" id="calculator"></td>
+    </tr>
+    <tr>
+        <td><input value="1" type="button"  onclick="inputNumber('1')"></td>
+        <td><input value="2" type="button" onclick="inputNumber('2')"></td>
+        <td><input value="3" type="button"  onclick="inputNumber('3')"></td>
+        <td><input value="+" type="button" onclick="inputNumber('+')"></td>
+    </tr>
+    <tr>
+        <td><button type="button" onclick="inputNumber('4')">4</button></td>
+        <td><button type="button" onclick="inputNumber('5')">5</button></td>
+        <td><button type="button" onclick="inputNumber('6')">6</button></td>
+        <td><button type="button" onclick="inputNumber('-')">-</button></td>
+    </tr>
+    <tr>
+        <td><button type="button" onclick="inputNumber('7')" >7</button></td>
+        <td><button type="button" onclick="inputNumber('8')">8</button></td>
+        <td><button type="button" onclick="inputNumber('9')">9</button></td>
+        <td><button type="button" onclick="inputNumber('x')">x</button></td>
+    </tr>
+    <tr>
+        <td><button type="button" onclick="clears()">C</button></td>
+        <td><button type="button" onclick="inputNumber('0')">0</button></td>
+        <td><button type="button" onclick="result()">=</button></td>
+        <td><button type="button" onclick="inputNumber('/')">/</button></td>
+        <td onclick="canBacHai()">√x</td>
+    </tr>
+</table>
+<script>
+
+    function inputNumber(input){
+        document.getElementById("calculator").value+=input;
+        // console.log(document.getElementById("calculator").value+=input)
+    }
+    function result(){
+        let input = document.getElementById('calculator').value;
+        console.log('input = ', input)
+        let result =  eval(input);
+        document.getElementById('calculator').value = result;
+    }
+    function clears(){
+        console.log('goi ham clear')
+        document.getElementById('calculator').value = '';
+    }
+    function canBacHai(){
+        let sqrt = Math.sqrt(+document.getElementById('calculator').value)
+        document.getElementById('calculator').value = sqrt;
+    }
+</script>
+</body>
+</html>
+</body>
+</html>

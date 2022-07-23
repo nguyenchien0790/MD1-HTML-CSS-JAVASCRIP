@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>baitap3</title>
+</head>
+<body>
+<script>
+    let text = prompt('nhap chu');
+    let chuInHoa = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    let chuInThuong = "qwertyuiopasdfghjklzxcvbnm";
+    let result=[];
+    for (let i=0; i<text.length;i++){
+        if (chuInHoa.indexOf(text[i])===-1){
+        result.push(text[i].toUpperCase());
+    }else if (chuInThuong.indexOf(text[i])===-1){
+        result.push(text[i].toLowerCase());
+    }else{
+        result.push(text[i]);
+        }
+    }
+    console.log(result.join(""));
+    console.log(text);
+
+
+
+</script>
+
+</body>
+</html>
